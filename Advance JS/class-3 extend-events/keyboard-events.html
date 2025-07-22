@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="title" tabindex="0">keyboard Events</h1> <!--for knowledge--- using tabindex we can achive -->
+    <input type="text" value="" placeholder="Type something" onkeypress="test()">
+    <script>
+        //as soon as you press it >> press down
+        // document.addEventListener('keydown', () => {
+        //     console.log(event);
+        //     console.log(event.key);
+        // })
+        // //normal keypress
+        // document.addEventListener('keypress', (event) => {
+        //     console.log(event);
+
+        // })
+        //long press >> relesase
+        // document.addEventListener('keyup', () => {
+        //     console.log(event);
+
+        // })
+
+        // let heading = document.getElementById('title')
+        // heading.addEventListener('keyup', (event) => {
+        //     console.log(event);
+
+        // })
+        function test() {
+            console.log(event);
+
+
+        }
+    </script>
+</body>
+
+</html>

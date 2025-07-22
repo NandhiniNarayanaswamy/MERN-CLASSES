@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>prompt box</h4>
+    <script>
+        //even prompt gives ok cancel
+        // in case ok it gives value in case cancel it gives null
+
+        let a = prompt("enter your name...")
+        console.log(a);
+
+        if (a !== null) {
+            let head = document.createElement('h3')
+            head.innerHTML = `hey ${a}`
+            document.body.append(head)
+        }
+    </script>
+</body>
+
+</html>

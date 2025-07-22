@@ -1,0 +1,38 @@
+🔍 What is localStorage?
+localStorage is a built-in JavaScript object provided by the browser.
+It lets you store data in key-value pairs on the user's browser.
+The data stays even if the user closes or refreshes the browser.
+
+🔍 What does setItem() do?
+setItem(key, value) is a method that saves data to localStorage.
+It takes two arguments:
+key: a name to identify the data (like a label)
+value: the actual data you want to store
+
+✅ What is DOMContentLoaded?
+DOMContentLoaded is a special event in JavaScript.
+It is fired by the browser when the HTML page is fully loaded (but before images, stylesheets, etc. finish loading).
+
+🔍 Where does it come from?
+It is part of the Web API provided by the browser, not JavaScript itself.
+You can use it on the document object — which represents the entire webpage.
+
+✅ Full line:
+document.addEventListener("DOMContentLoaded", () => {
+    // your code here
+});
+
+💡 What it means:
+"Hey browser, when the HTML has finished loading, run this function."
+
+So the code inside the function will only run after the HTML is ready.
+
+✅ Why is it used?
+Let’s say you have this code:
+
+document.getElementById("myButton").addEventListener("click", doSomething);
+If you write this before the HTML <button id="myButton">Click</button> is loaded, it will give an error because the element doesn't exist yet.
+
+🔹 .toggle("dark-mode")
+=> 🌞 -> This adds the class "dark-mode" if it’s not already there. (OR)
+=> 🌙 -> it removes the class "dark-mode" if it is already there.

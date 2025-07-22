@@ -1,0 +1,19 @@
+context:-
+
+-- querySelector() -> like getElementByClassname, Id, tagname | here it selects first one 
+-- querySelectorAll() -> here it selects all like querySelectorAll(.classname | #id)
+-- alert() -> before page load this will popup
+-- confirm() -> give confirmation ok or cancel
+-- prompt() -> type a text inside the box -- like what you name
+-- appendchild() -> only one child is displayed
+{pointer-events}
+-- onclick() -> if we click some action needs to perform, 
+                It’s an instance of a class like MouseEvent, PointerEvent, KeyboardEvent, etc., depending on the event type.
+-- ondblclick() -> double click should be done
+
+{input events}
+-- oninput() -> each letter is stored in value
+-- onblur() -> type and come out of the box then only stored
+-- onfocus() -> type and come out and again go inside the box then only stored and displayed
+-- onchange() -> type and come out then stored and displayed but rather like blur it won't stored again and again when you click the box, it stored only when you make changes else not
+

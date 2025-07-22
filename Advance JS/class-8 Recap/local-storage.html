@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Local storage - shopping application</title>
+</head>
+
+<body>
+
+    <button onclick="addToCart('T-shirt')">Add T-shirt</button>
+    <button onclick="addToCart('Mobile')">Add Mobile</button>
+    <button onclick="addToCart('AC')">Add AC</button>
+    <button onclick="clearCart()">Clear Cart</button>
+
+    <h3>Your Cart: </h3>
+    <ul id="cartList"></ul>
+
+    <script>
+        function addToCart(item) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || []
+            cart.push(item);
+            localStorage.setItem("cart", JSON.stringify(cart)); //store the data in the local storage
+            displayCart()
+        }
+
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            let cartList = document.getElementById("cartList");
+            cart.innerHTML = "";
+
+            cart.forEach(item => {
+                let li = document.createElement("li");
+                li.textContent = item;
+                cartList.appendChild(li)
+            })
+        }
+
+        function clearCart() {
+            localStorage.removeItem("cart");
+            displayCart()
+        }
+
+        // display cart on page load
+        document.addEventListener("DOMContentLoaded", displayCart)
+
+
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+ local storage and session storage in javascript used to store the key-value pairs of the user's information
+
+
+ local storage...if we store the user data using local storage, till we delete manually it will present..
+even if we close our browser or open new window our day will present
+
+session storage....keeps the data only for the duration of the session..(it will be cleared when the page is closed)
+
+-->

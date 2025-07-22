@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>confirm text</h4>
+    <script>
+        // here we have 2 option OK   CANCEL
+        //                       true false
+
+        let a = confirm("confirm do you wish to continue ? ")
+        //this part only works when you give ok means when it is true
+        if (a) {
+            alert("thanks for your confirmation")
+            let heading = document.createElement('h4');
+            console.log(heading);
+            heading.innerHTML = "since you have confirmed here we go!!!!"
+            document.body.append(heading)
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local storage</title>
+</head>
+
+<body>
+    <!--giving 1 input box & 3 buttons to set,get and remove the name-->
+    <input id="inputvalue" placeholder="enter you name" type="text">
+
+    <button onclick="setname()">Save Name</button>
+
+    <button onclick="getname()">Get Name</button>
+
+    <button onclick="removename()">Remove Name</button>
+    <p></p>
+    <div id="display"></div> <!--here i display the saved data-->
+
+    <script>
+        function setname() { //this func vl store the name in local storage
+            let name = document.getElementById("inputvalue").value //  gets the value typed in the input box.
+            localStorage.setItem("username", name) //stores that value in the browser's local storage with key "username".
+            alert("your name is stored in Local storage")
+        }
+        function getname() {
+            let storedName = localStorage.getItem("username") // tries to read the value stored under the key "username". and store in storedName variable
+            if (storedName) { //if there is any value it is true
+                document.getElementById("display").innerText = "stored name is : " + storedName // If something is found, it displays that in the <div> with id="display".
+            } else {
+                alert("no data is found")
+            }
+
+        }
+        function removename() {
+
+            localStorage.removeItem("username") //deletes the data from local storage.
+            document.getElementById("display").innerHTML = ""//get the <div> element and .innerText get the text inside the element and "" clear the content
+            alert("Name is removed")
+        }
+    </script>
+</body>
+
+</html>

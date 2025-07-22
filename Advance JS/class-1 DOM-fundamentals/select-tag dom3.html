@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- selectors
+        id selectors >> unique in nature
+        class selectors >> same class to multiple element
+        tag selectors >> n no of same tags
+     -->
+    <h1 id="heading1">Hello world</h1>
+    <div class="container">
+        <div class="navItems">Home</div>
+        <div class="navItems">About</div>
+        <div class="navItems">Feature</div>
+    </div>
+    <script>
+        // document.getElementById()  //getElementById() we mentioned Element is because unique 
+        // document.getElementsByClassName() //elements because same class to multiple element
+        // document.getElementsByTagName()  //elements because n no of same tags
+
+        let heading = document.getElementById("heading1")
+        console.log(heading);
+        let wrapper = document.getElementsByClassName("container")     //both getelementsby classname and tagname are stored in array
+        console.log(wrapper);
+        let navbaritem = document.getElementsByClassName("navItems")
+        console.log(navbaritem);
+
+        for (let i = 0; i < navbaritem.length; i++) {   //since navbaritems are stored in array we can use for loop and if we style it applied to all
+
+            // console.log("statement", navbaritem[i]);
+            navbaritem[i].innerHTML = "this is heading"
+            navbaritem[i].style.color = "green"
+            navbaritem[i].style.border = "2px solid purple"
+            navbaritem[i].style.margin = "10px";
+            navbaritem[i].style.padding = "5px"
+            let button = document.createElement("button")
+            button.innerHTML = "click"
+            button.style.backgroundColor = "purple"
+            button.style.color = "white"
+            button.style.leftMargin = "2px"
+            button.style.padding = "5px 30px"
+            navbaritem[i].append(button)
+
+        }
+
+
+    </script>
+</body>
+
+</html>

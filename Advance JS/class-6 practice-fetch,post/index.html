@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Application</title>
+    <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+    <div>
+        <h1>Sample Application</h1>
+        <!--Form to add the new post-->
+        <div class="form">
+            <input type="text" id="titleInput" placeholder="Enter the post Title">
+            <textarea id="bodyInput" placeholder="Enter the brief about the post"></textarea>
+            <button onclick="addPost()">Add Post</button>
+            <!--Container to display the post-->
+            <div id="postContainer"></div>
+        </div>
+        <script src="./script.js"></script>
+    </div>
+</body>
+
+</html>

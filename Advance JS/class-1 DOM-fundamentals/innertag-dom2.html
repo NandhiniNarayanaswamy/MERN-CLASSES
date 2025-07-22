@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Html inner tags-->
+    <div class="container">
+        <div id="items" class=" child childItems">
+            <div>HI</div>
+            <h6>hello</h6>
+        </div>
+    </div>
+
+    <!--script tag creating the above html tag -->
+    <script>
+        // @@@@@@ >> 1st way--using innerHTML << @@@@@@@
+        let div1 = document.createElement('div')
+        //create attribute
+        div1.setAttribute("class", "container")
+        //to use multiple tag use backticks
+        div1.innerHTML = `
+       <div id="items" class=" child childItems">
+            <div>HI from script</div>
+            <h6>hello JS</h6>
+        </div>
+       `
+        document.body.append(div1)
+
+        // @@@@@@ >> 2nd way--using innerText line by line creation << @@@@@@
+
+        let div2 = document.createElement('div')
+        div2.setAttribute("class", "container")
+        console.log(div2);
+
+        let div3 = document.createElement('div')
+        div3.setAttribute("id", "items")
+        //div3.setAttribute("class","child childItems")
+        // for multiple class items use classlist
+        div3.classList.add('child', 'childItems')
+        console.log(div3);
+
+        let div4 = document.createElement('div')
+        div4.innerText = "hiii"
+        // !!!!!! >> we can create style here in js using style property << !!!!!!!
+        div4.style.backgroundColor = "olive" //when there is 2 word second word should start with caps, like we have in background-color, font-size in css
+        div4.style.width = "50%"
+        div4.style.margin = "10%"
+        div4.style.border = "3px solid black"
+        div4.style.padding = "10px"
+        div4.style.color = "red"
+
+        let heading = document.createElement('h4')
+        heading.innerText = "hello nandhini"
+        console.log(div4);
+
+        //now append >> 1st div inside the body ri8 so,
+        document.body.append(div2) //since it is inside the body we use body
+        div2.append(div3) //it is inside the div2 not the body so v use only append
+        div3.append(div4, heading)//div4 & heading is inside the div3
+
+        //we have appendChild() >> only appends one child, whereas append() method append n no of. child
+        //div3.appendChild(div4, heading) >> only gives div4 not heading
+        //div3.appendChild(heading)
+
+
+
+    </script>
+</body>
+
+</html>

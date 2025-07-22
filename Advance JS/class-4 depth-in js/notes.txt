@@ -1,0 +1,192 @@
+🎯 synchronous:-
+    It is going to execute code line by line and it will block the other operation untill current operation completes its execution.
+🎯 Asyncronous:-
+    non-blocking- It will not wait current operation completes its execution instead it will go for next operation.
+
+🎯 foreach 
+-------------
+    The forEach loop is a built-in array method in JavaScript that lets you iterate over each item in an array and perform some action on it.
+
+✅ Syntax:-
+------------------------------------------------------
+| array.forEach(function(element, index, array) {    |
+|  // Do something with each element                 |
+|    });                                             |
+------------------------------------------------------                                             
+element → current item in the array
+index (optional) → index of the current item
+array (optional) → the whole array
+
+🧪 Example-
+fruits.forEach(function(fruit) {
+  console.log(fruit);
+});
+
+🧪  Example:
+const numbers = [1, 2, 3];
+numbers.forEach(function(num) {
+  console.log(num * 2);
+});
+
+ It is like map but difference is :-
+🔁 forEach()
+✅ Loops through each element in the array
+❌ Does not return anything (always returns undefined)
+✅ Used when you want to perform side effects (like printing, updating DOM, etc.)
+
+🔁 map()
+✅ Loops through each element
+✅ Returns a new array
+✅ Used when you want to transform the array
+
+🎯 setTimeout
+-----------------
+
+setTimeout is a built-in JavaScript function that:
+=> Waits for a specified time (in milliseconds)
+=> Then executes a function
+
+✅ syntax:
+------------------------------------------------
+| setTimeout(callbackFunction, delayTimeInMs); |
+------------------------------------------------
+=> The first parameter is a function (callback) that will be executed after the delay.
+=> The second parameter is the delay in milliseconds.
+
+🔍 Example:
+
+setTimeout(function () {
+  console.log("This runs after 2 seconds");
+}, 2000);
+
+✅ Why is this a callback?
+Because:
+You're passing a function to another function (setTimeout)
+And that function will be called back later — after the timer ends
+
+even foreach is a callback function same as settimeout
+
+🎯 callback()
+--------------
+A callback function is a function passed as an argument to another function, which is then invoked (called back) inside that outer function to complete some kind of routine or action.
+🔹 In Simple Terms:
+A callback is a way to say:
+"When you’re done with your job, call this function."
+
+🎯 promise
+------------
+=>Promise in javascript is an Object that represents the evenatual completion or failure of an aync operation.
+=>It allows us to handle async code more efficiently and we can use promise to avoid the callback hell
+State of the promise....
+1) Pending state -- The initial state, the operation is not yet completed
+2) Fulfilled (resovled)... The operation completed successfully and the result is available
+3) Rejected...The operation failed and error reason is available
+
+syntax ..promsie is created using the Promise constructor.
+handle by .then(),.catch(),.finally()
+ here in promise resolve means
+
+🔍 What exactly does resolve() do?
+✅ resolve(value) → tells JavaScript:
+“This asynchronous task is complete successfully, and here is the value (data) I want to pass to the next .then().”
+🔧 Example:
+-------------------------------------------------------
+| new Promise((resolve, reject) => {                  |
+|  // do some task                                    |
+|  resolve("Task done!");                             |
+|  })                                                 |
+|  .then(result => {                                  |
+|   console.log(result);  // Output: Task done!       |
+|   });                                               |
+-------------------------------------------------------  
+So yes — you're absolutely right:
+resolve(...) is used when the Promise is successful, move "task done" to the next .then()
+It also sends a value (like an object or string) to the next .then()
+
+🎯 async and await
+-------------------
+
+🧠 What is async/await?
+=> async and await are modern ways to write asynchronous code.
+=> They make your code look like synchronous code, but it still runs asynchronously behind the scenes.
+=> async/await is built on top of Promises.
+🟢 async/await = cleaner, simpler way to use promises without chaining .then() over and over
+
+🔍 What does async do?
+=> When you put async before a function, it always returns a Promise.
+=> Even if you return a normal value, it gets wrapped in a Promise.
+
+🔍 What does await do?
+=> await can only be used inside an async function.
+=> It pauses the function until the Promise is resolved.
+=> Then it returns the result, just like .then() would.
+
+✅ When to Use async/await?
+=> When you have multiple asynchronous steps to do in order
+=> When you want to write cleaner and more readable code
+=> When you want to avoid .then() chaining or callback hell
+
+🧪 example:-
+---------------
+-------------------------------------------------------------------------------
+|  function step1() {                                                         |
+|    return new Promise(res => setTimeout(() => res("Step 1 done"), 1000));   |
+|  }                                                                          |
+|                                                                             |
+|  function step2() {                                                         |
+|    return new Promise(res => setTimeout(() => res("Step 2 done"), 1000));   |
+|  }                                                                          |  
+|                                                                             |
+|  async function runProcess() {                                              |    
+|    const r1 = await step1();                                                |          
+|    console.log(r1);                                                         |      
+|                                                                             |          
+|    const r2 = await step2();                                                |  
+|    console.log(r2);                                                         |  
+|  }                                                                          |
+|                                                                             |
+|  runProcess();                                                              |
+-------------------------------------------------------------------------------
+
+🔍 Explanation:
+step1 is a normal function that returns a Promise.
+setTimeout(...) simulates a 1-second delay.
+After 1 second, it resolves (successfully completes) with the string "Step 1 done"
+
+async function runProcess() 
+-------------------------------
+
+🔍 Explanation:
+You declare an async function named runProcess().
+This allows you to use await inside it.
+
+const r1 = await step1();
+---------------------------
+
+🔍 Explanation:
+You call step1() and use await to pause until the Promise is resolved.
+The result "Step 1 done" is stored in variable r1.
+
+
+✅ await vs .then(): What's the Difference?
+They do the same thing, but in different styles.
+
+🔁 With .then():
+*********************************************************
+step1().then(result => {
+  console.log(result); // Step 1 done
+});
+*********************************************************
+# step1() returns a Promise
+# .then() waits for it to resolve
+# When it resolves, the result is passed to the callback
+
+🧠 With await:
+***************************************
+const r1 = await step1();
+console.log(r1);  // Step 1 done
+***************************************
+# step1() is called immediately
+# await pauses the current function (runProcess()) until the promise resolves
+# When resolved, the value is stored in r1
+# Then it moves to the next line (console.log(r1))

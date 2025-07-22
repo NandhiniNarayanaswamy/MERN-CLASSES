@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="num1" placeholder="Type 1st Num" onKeyup="calculatesum()" value="">
+    <p></p>
+    <input type="text" name="" id="num2" placeholder="Type 2nd Num" onKeyup="calculatesum()" value="">
+    <p>press enter to add</p>
+    <h3>Result:<span id="result"></span></h3>
+    <script>
+        function calculatesum() {
+            if (event.key == "Enter") {
+                let num1Value = document.getElementById("num1")
+                // console.log(typeof(num1Value));  // this is string
+
+                let floatNum1 = parseFloat(num1Value.value) || 0  //converting to float
+                let num2Value = document.getElementById("num2")
+                let floatNum2 = parseFloat(num2Value.value) || 0
+                let resultShow = document.getElementById("result")
+                resultShow.innerHTML = floatNum1 + floatNum2
+
+            }
+        }
+    </script>
+</body>
+
+</html>

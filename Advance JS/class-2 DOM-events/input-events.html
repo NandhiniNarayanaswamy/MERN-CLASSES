@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="">onInput</label>
+    <!--when you type each letter is stored in event.target.value and that is displayed in console-->
+    <input type="text" name="" id="" value="" oninput="test()">
+    <p></p>
+    <label for="">Blur</label>
+    <!--when you type and come out of the box it  is stored in event.target.value, again you go inside the box again it is stored and displayed in console and that is displayed in console-->
+    <input type="text" name="" id="" value="" onblur="test()">
+    <p></p>
+
+    <label for="">onfocus</label>
+    <!--type and come out and again go inside the box then only stored and displayed-->
+    <input type="text" name="" id="" value="" onfocus="test()">
+    <p></p>
+
+    <label for="">onchange</label>
+    <!--type and come out then stored and displayed but rather like blur it won't stored again and again when you click the box, it stored only when you make changes else not-->
+    <input type="text" name="" id="" value="" onchange="test()">
+    <script>
+        function test() {
+            console.log(event.target.value);
+
+        }
+    </script>
+</body>
+
+</html>

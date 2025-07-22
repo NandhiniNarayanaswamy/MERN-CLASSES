@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- HTML & JS -->
+    <!-- onclick() inside the ""-> mention what you want >> with the help of function we do that-->
+
+    <button onclick="clickme()">click</button>
+    <button id="btn">click ID</button>
+    <button onclick="counterclick()">counter</button>
+    <button ondblclick="testing()">double</button>
+    <div id="cnt"></div>
+    <script>
+        function clickme() {
+            console.log(event);
+            alert("hey thanks for clicking")
+            //It's a special object that the browser gives you automatically when something happens — like a click.
+
+            // It has information about the click, such as:
+            // Which element was clicked(event.target)
+            // Where the mouse was when clicked(event.clientX, event.clientY)
+            // What type of click (mouse, touch, pen – event.pointerType)
+            // and much more!
+
+
+            // Why do we get this object ?
+            //                 Because the browser wants to tell your function:
+
+            // “Hey! Something just happened, and here are the details!”
+
+            //             So, when you write:
+
+            //             javascript
+            //             Copy
+            //             Edit
+            //             function(event) {
+            //                 console.log(event);
+            //             }
+            // 👉 The browser gives your function that event object automatically.
+            //         }
+
+        }
+
+        let btn = document.getElementById('btn') //got that element now add event on that element
+        //using addEventListener(event,anonymous function || arraow function should be used not normal function)
+        btn.addEventListener("click", function () { // here
+            console.log(event);
+            console.log(2 + 2);
+
+        })
+
+        //purly with js
+
+        //create element
+        let bttn = document.createElement('button')
+        bttn.innerHTML = "pure js"
+        document.body.append(bttn)
+        //button created
+        //now add event on that
+        bttn.addEventListener("click", () => console.log("you just clicked"))
+        //for counter
+        let count = 0;
+        function counterclick() {
+            count++;
+            console.log(count);
+
+            let display = document.getElementById('cnt')
+            display.innerHTML = `${count}`
+            document.body.append(display)
+
+        }
+        //for double click
+        function testing() {
+            console.log("double click");
+
+        }
+
+
+    </script>
+</body>
+
+</html>

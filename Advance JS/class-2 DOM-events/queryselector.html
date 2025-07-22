@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 id="heading1">Hello world</h1>
+    <div class="container">
+        <div class="navItems">Home</div>
+        <div class="navItems">About</div>
+        <div class="navItems">Features</div>
+    </div>
+    <div>amazing</div>
+    <script>
+        //document.querySelector() --- In JavaScript, the querySelector() method is used to select the first element in the DOM that matches a specified CSS selector.
+        //document.querSelectorAll() --- querySelectorAll() is a method used to select all elements in the DOM that match a specified CSS selector.
+        //It returns a NodeList, which is like an array(but not exactly).
+        // --"It returns a NodeList, which is like an array (but not exactly)."
+        //   This means:
+        //   When you use document.querySelectorAll(), it returns multiple elements.
+        //   These elements are stored in something called a NodeList.
+        //   A NodeList looks like an array(it has numbers like[0], [1], [2], a.length property, etc.)
+        //   BUT — it's not a real array, and it doesn’t have all array methods.
+
+        // !!!!! both getelementbyId,getelementbyclassname,getelementbytagname & querySelector(), querySelectorAll() works same under the wood it differs
+        //.classname
+        let navbarItems = document.querySelector('.navItems')  // it only Returns the first matching element or null if no match is found.
+        console.log(navbarItems);
+
+        let navbarItems2 = document.querySelectorAll('.navItems')
+        console.log(navbarItems2);
+
+        //tagname
+        let divItems1 = document.querySelector('div')
+        console.log(divItems1);
+
+        let divItems2 = document.querySelectorAll('div')
+        console.log(divItems2);
+
+        //id
+        let headingId = document.querySelector('#heading1')
+        console.log(headingId);
+
+        let headingId2 = document.querySelectorAll('#heading1')
+        console.log(headingId2);
+
+
+
+    </script>
+</body>
+
+</html>

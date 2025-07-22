@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Hello wolrd using HTML-->
+    <h1>hello world from HTML</h1>
+    <!--Hello world using JS >> in the body place in the document-->
+
+    <!--document methods-->
+    <!--script tag-->
+    <script>
+        //creating element
+        //element >> tag + content
+        let header = document.createElement('h2') //tagname >> tag is created like<h2></h2>
+        console.log(header);  //console it u see tag
+
+        //for content you can use innerHTML/Text || innerText >> only Text
+        header.innerText = "Hello world for JS"
+        console.log(document.body); //console the document 
+        document.body.append(header)//to show on the web page for that we need to use append
+        // create element using div tag
+        let para = document.createElement('div') //created div tag
+        console.log(para);
+        para.innerHTML('p')
+        //document.body.append(para)
+
+    </script>
+
+</body>
+
+</html>

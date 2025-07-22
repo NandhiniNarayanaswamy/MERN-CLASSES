@@ -1,0 +1,11 @@
+Here today learnt:-
+--- what is DOM? Document Object Model
+    in browser html creats a dom tree js access the dom tree
+-- How it js access DOM
+ -- By using js how to create a element that is tag + content
+ difference b/w innerText and innerHTML
+ -- learn how to style the element
+ -- how to create nested div, how to create attributes,
+ -- how to append the div tag
+ -- how to select the existing tag in HTML and access it or modify it
+ -- since classname are stored in array how to use for loop here in dom

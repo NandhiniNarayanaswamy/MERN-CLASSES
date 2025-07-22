@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Session Storage:</title>
+</head>
+
+<body>
+    <h2>Login:</h2>
+    <input type="text" id="username" placeholder="Enter the username">
+    <button onclick="login()">Login</button>
+    <button onclick="logout()">Logout</button>
+
+    <p id="message"></p>
+
+    <script>
+        // // check if user is already logged in during the session
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     let user = sessionStorage.getItem("user")
+        //     if(user){
+        //         document.getElementById("message").innerText = "Welcome, " + user + "!"
+        //     }
+        // })
+
+        function login() {
+            let username = document.getElementById("username").value;
+            if (username) {
+                sessionStorage.setItem("user", username);
+                document.getElementById("message").innerText = "Welcome, " + username + "!"
+            } else {
+                alert("Please enter the username")
+            }
+        }
+
+        function logout() {
+            sessionStorage.removeItem('user');
+            document.getElementById("message").innerText = "";
+            alert("Logged out successfully")
+        }
+    </script>
+
+</body>
+
+</html>
