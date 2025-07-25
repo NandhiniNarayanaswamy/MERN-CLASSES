@@ -1,3 +1,4 @@
+
 // Spread operator (...) allows to expend the elements (array, object or strings)
 
 // without spread operator

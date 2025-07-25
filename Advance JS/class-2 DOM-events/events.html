@@ -35,10 +35,6 @@
             // “Hey! Something just happened, and here are the details!”
 
             //             So, when you write:
-
-            //             javascript
-            //             Copy
-            //             Edit
             //             function(event) {
             //                 console.log(event);
             //             }
@@ -48,8 +44,29 @@
         }
 
         let btn = document.getElementById('btn') //got that element now add event on that element
-        //using addEventListener(event,anonymous function || arraow function should be used not normal function)
-        btn.addEventListener("click", function () { // here
+        //using addEventListener(event,anonymous function || arraow function or anonymous function is for optimization)
+        /*the code will still run without error if you use a named function instead of an anonymous or arrow function.
+The reason people often prefer anonymous or arrow functions is not because it's required, but because of readability, context handling, and optimization in specific cases.
+🔍 Let's break this down clearly:
+✅ All 3 will work:
+
+// Named function
+function handleClick() {
+  console.log("Clicked");
+}
+btn.addEventListener("click", handleClick);  // ✅ Works
+
+// Anonymous function
+btn.addEventListener("click", function () {
+  console.log("Clicked");
+});  // ✅ Works
+
+// Arrow function
+btn.addEventListener("click", () => {
+  console.log("Clicked");
+});  // ✅ Works*/
+        btn.addEventListener("click", function () { // here only click is used as event whereas in HTML onclick="clickme()" clickme is used as event 
+
             console.log(event);
             console.log(2 + 2);
 
