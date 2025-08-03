@@ -53,3 +53,24 @@ choosefood("biriyani")
         console.log("final order status is", order);
 
     })
+/*
+🔁 This line starts everything:
+
+choosefood("biriyani")
+This calls the choosefood function with "biriyani" as input.
+
+After 1 second, it resolves with:
+
+{ food: "biriyani", status: "choosen" }
+📦 Then this happens:
+
+.then(placeorder)
+The .then() receives the resolved value from choosefood — which is:
+
+{ food: "biriyani", status: "choosen" }
+So this value becomes the input to placeorder.
+
+Meaning this is happening behind the scenes:
+
+placeorder({ food: "biriyani", status: "choosen" });
+*/

@@ -1,0 +1,83 @@
+🎯 Regular Expression
+----------------------
+✅ What is a Regular Expression?
+A regular expression is a special sequence of characters that helps you match, find, or replace patterns in text.
+You can think of it as a pattern-matching tool.
+For example:
+=> Finding all phone numbers in a text.
+=> Checking if an email is valid.
+=> Replacing all spaces with hyphens.
+📌 How to Write a Regular Expression?
+There are two ways:
+1. Using Slash Notation (Common)
+let regex = /abc/;
+2. Using RegExp constructor
+let regex = new RegExp("abc");
+Both do the same thing. Slash notation is simpler and used more often.
+
+🛠️ Basic RegEx Functions in JavaScript
+
+| Method             | Description                                   | Example                                     |
+| ------------------ | --------------------------------------------- | ------------------------------------------- |
+| `.test(string)`    | Returns `true` if it finds a match            | `/abc/.test("abcdef") → true`               |
+| `.exec(string)`    | Returns the matched part or `null`            | `/\d+/.exec("abc123") → ["123"]`            |
+| `string.match()`   | Returns array of matches                      | `"abc123".match(/\d+/) → ["123"]`           |
+| `string.replace()` | Replaces the matched part with something else | `"abc123".replace(/\d+/, "XYZ") → "abcXYZ"` |
+
+🧠 Think of RegEx as Patterns
+Here are some basic symbols (called metacharacters) that are most commonly used:
+
+🔤 Character Matching
+| Pattern  | Meaning                           | Example Matches              |
+| -------- | --------------------------------- | ---------------------------- |
+| `.`      | Any one character except newline  | `a.b` → "acb", "arb"         |
+| `\d`     | Any digit (0–9)                   | `/\d/` → "1", "5"            |
+| `\w`     | Any letter, digit, or underscore  | `/\w/` → "a", "Z", "5", "\_" |
+| `\s`     | Any whitespace (space, tab, etc.) | `/\s/` → " "                 |
+| `[abc]`  | Match any one of a, b, or c       | `/[abc]/` → "a"              |
+| `[^abc]` | Match anything except a, b, or c  | `/[^abc]/`                   |
+
+🔁 Quantifiers (Repetition)
+| Pattern | Meaning                   | Example                                |
+| ------- | ------------------------- | -------------------------------------- |
+| `*`     | 0 or more times           | `/a*/` matches "", "a", "aaa"          |
+| `+`     | 1 or more times           | `/a+/` matches "a", "aa"               |
+| `?`     | 0 or 1 time               | `/a?/` matches "", "a"                 |
+| `{n}`   | Exactly `n` times         | `/a{3}/` matches "aaa"                 |
+| `{n,}`  | At least `n` times        | `/a{2,}/` matches "aa", "aaa"          |
+| `{n,m}` | Between `n` and `m` times | `/a{2,4}/` matches "aa", "aaa", "aaaa" |
+
+✅ Anchors
+| Pattern | Meaning             |
+| ------- | ------------------- |
+| `^`     | Start of the string |
+| `$`     | End of the string   |
+
+✅ g, i, and m in JavaScript RegEx
+| Flag | Meaning          | What it does                                                                      |
+| ---- | ---------------- | --------------------------------------------------------------------------------- |
+| `g`  | Global           | Finds **all** matches, not just the first one                                     |
+| `i`  | Case-insensitive | Ignores uppercase/lowercase differences                                           |
+| `m`  | Multiline        | Allows `^` and `$` to match **start/end of each line**, not just the whole string |
+
+🔍 Examples
+🔸 g – Global match
+let str = "cat cat cat";
+let regex = /cat/g;
+console.log(str.match(regex));  // ["cat", "cat", "cat"]
+Without g:
+let regex = /cat/;
+console.log(str.match(regex));  // ["cat"] → only first one
+🔸 i – Case-insensitive
+let str = "JavaScript is Fun";
+let regex = /javascript/i;
+console.log(regex.test(str));  // true
+Without i:
+let regex = /javascript/;
+console.log(regex.test(str));  // false (because "J" is capital)
+🔸 m – Multiline mode
+let str = `hello
+world`;
+let regex = /^world/m;
+console.log(str.match(regex));  // ["world"]
+Without m, ^ only matches the beginning of the whole string, not after the line break.

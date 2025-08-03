@@ -1,0 +1,13 @@
+arrow function
+for in
+for offoreach
+arraystring
+map
+filter
+reduce
+regular expression
+set
+hoisting
+constructor
+object
+class
