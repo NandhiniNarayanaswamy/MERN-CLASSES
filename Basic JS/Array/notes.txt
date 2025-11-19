@@ -1,0 +1,209 @@
+                                                🏷️ Array
+                                                ----------
+In JavaScript, an array is a special type of object used to store multiple values in a single variable, in an ordered way.
+You can think of it like a list where each item has a position (called an index).
+🔑 Key Point
+----------
+1️⃣ Stores multiple values
+Instead of creating multiple variables:
+💡 Example:
+let fruit1 = "Apple";
+let fruit2 = "Banana";
+let fruit3 = "Orange";
+You can store them in one array:
+let fruits = ["Apple", "Banana", "Orange"];
+
+2️⃣ Indexed starting from 0
+The first element has index 0, the second 1, and so on
+💡 Example:
+console.log(fruits[0]); // "Apple"
+console.log(fruits[1]); // "Banana"
+
+3️⃣ Can store any data type (even mixed types)
+💡 Example:
+let mixed = [1, "Hello", true, { name: "Nandhini" }, [10, 20]];
+
+4️⃣ Dynamic in size — You can add or remove elements anytime.
+💡 Example:
+fruits.push("Grapes"); // Adds to end
+fruits.pop(); // Removes last element
+
+5️⃣ Array is actually an object
+💡 Example:
+console.log(typeof fruits); // "object"
+console.log(Array.isArray(fruits)); // true
+
+📍 Creating Array
+-----------------
+// 1. Using array literal (most common)
+let arr1 = [10, 20, 30];
+
+// 2. Using the Array constructor
+let arr2 = new Array(10, 20, 30);
+
+// 3. Empty array and adding elements later
+let arr3 = [];
+arr3[0] = "Apple";
+arr3[1] = "Banana";
+
+🧐 How array can be an Objects ❓
+-------------------------------
+💭 Arrays are Objects with Numbered Keys
+Internally, an array is like an object with integer-like keys:
+let fruits = ["Apple", "Banana", "Orange"];
+
+// Internally similar to:
+let fruitsObj = {
+    0: "Apple",
+    1: "Banana",
+    2: "Orange",
+    length: 3
+};
+The keys (0, 1, 2) are just string properties of the object.
+length is an automatic property that updates when you add/remove elements.
+
+                                                🏷️for-of & for-in
+                                                ------------------
+✔️ for...in loop
+******************
+Purpose: Loop through keys (property names) of an object or array.
+
+📜 Syntax:
+for (let key in object) {
+    // code using key
+}
+
+🔑 Key Points:
+----------------
+✨Iterates over enumerable property names (keys) in an object.
+✨Works for objects and arrays, but not recommended for arrays when you care about order or performance.
+✨The key is always a string, even for array indexes.
+✨Will also include inherited properties (from prototype) unless you check with hasOwnProperty.
+
+💡 When to use for...in
+For objects when you want property names.
+Avoid it for arrays if you only want values (use for...of instead).
+
+💡 Example
+________________________________________________________________
+
+let person = { name: "Nandhini", age: 22, city: "Bangalore" };
+
+for (let key in person) {
+    console.log(key, person[key]);
+}
+
+O/P
+name Nandhini
+age 22
+city Bangalore
+___________________________________________________________________
+
+✔️ for..of loop
+-----------------
+Purpose: Loop through values of an iterable (Array, String, Map, Set, etc.).
+
+📜 Syntax:
+for (let value of iterable) {
+    // code using value
+}
+🔑 Key Points:
+⭐ Iterates over values, not keys.
+⭐ Works only on iterables (Array, String, Map, Set, etc.).
+⭐ Doesn’t work directly on objects (because objects are not iterable by default).
+
+💡 Example
+_______________________________________________
+
+let fruits = ["Apple", "Banana", "Orange"];
+
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+Apple
+Banana
+Orange
+________________________________________________
+
+💡 When to use for...of
+For arrays, strings, maps, sets, or any iterable when you need values directly.
+
+                                                🏷️ for...each loop
+                                                -------------------
+🧐 What is forEach?
+forEach is a built-in array method in JavaScript that lets you execute a function once for every element in an array, in order.
+
+It’s like saying:
+
+“For each element in this array, run this function.”
+
+📜 Syntax:-
+array.forEach(function(element, index, array) {
+    // code to run for each element
+});
+
+Parameters:
+
+element → The current value in the array (required).
+index → The index of the current element (optional).
+array → The array being traversed (optional).
+
+💡 Example
+let fruits = ["Apple", "Banana", "Orange"];
+
+fruits.forEach(function(fruit) {
+    console.log(fruit);
+});
+Output
+-------
+Apple
+Banana
+Orange
+
+💡 Example — With Index
+
+ let fruits = ["Apple", "Banana", "Orange"];
+fruits.forEach(function(fruit, index) {
+    console.log(index, fruit);
+});
+
+Output:
+0 Apple
+1 Banana
+2 Orange
+
+📌Important Points about forEach
+
+✨ Works only on arrays (and array-like objects with forEach method).
+✨ Always executes for each element — cannot skip or break out (use for or for...of if you need to break).
+✨ Does not return a new array — it always returns undefined.
+✨ Used when you want to perform an action, not transform data
+________________________________________________________________________________
+
+❌ Example of trying to break:
+let nums = [1, 2, 3, 4];
+
+nums.forEach(num => {
+    if (num === 3) break; // ❌ SyntaxError — can't use break here
+    console.log(num);
+});
+__________________________________________________________________________________
+forEach vs for...of vs map
+| Feature        | forEach                         | for...of               | map                       |
+| -------------- | ------------------------------- | ---------------------- | ------------------------- |
+| Returns value? | ❌ No                            | ❌ No                   | ✅ New array           |
+| Can break?     | ❌ No                            | ✅ Yes                  | ❌ No                  |
+| Best for       | Running actions on each element | Looping through values | Transforming array values |
+
+
+
+
+
+
+
+
+
+
+
+

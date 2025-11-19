@@ -1,0 +1,74 @@
+function getuser(id) {
+  return new Promise((resolve, reject) => {
+    console.log("GOT USER ID:", id);
+    setTimeout(() => {
+      resolve({ id: id, name: "nandhu" })
+    }, 2000);
+  })
+}
+
+console.log(getuser(1));
+🔍 What happens step by step
+
+Call getuser(1)
+
+Enters the function.
+
+new Promise(...)
+
+Creates a new Promise object immediately.
+
+Runs the executor function (resolve, reject) => { ... }.
+
+Inside executor
+
+console.log("GOT USER ID:", id) runs instantly (synchronous).
+
+setTimeout(...) is scheduled for 2 seconds later → but it doesn’t block anything (async).
+
+The executor finishes.
+
+Return
+
+At this moment, the Promise object is returned right away.
+
+Its state = pending (because we haven’t called resolve yet).
+
+That’s why console.log(getuser(1)) prints Promise { <pending> }.
+
+After 2 seconds
+
+The callback inside setTimeout runs.
+
+resolve({ id: id, name: "nandhu" }) is called.
+
+Now the Promise changes from pending → fulfilled.
+
+✅ So the answer
+
+No ❌ — JavaScript does not wait for 2 seconds to return the Promise.
+
+It returns the Promise immediately, with state = pending.
+
+The setTimeout runs separately in the background.
+
+After 2 seconds, the Promise settles (fulfilled).
+
+
+------------------------------------------------async & await--------------------------------------------
+
+In JavaScript, `async` and `await` are used to handle asynchronous code in a way that makes it easier to read and understand, compared to using `Promises` with `.then()` and `.catch()`.
+The `async` keyword is used to define a function that always returns a **Promise**. This makes it possible to use the `await` keyword inside it to pause execution of the function until a Promise is resolved or rejected.
+
+- An `async` function always returns a **Promise**, even if it doesn’t explicitly return one.
+- If an `async` function returns a non-Promise value (like a string, number, object, etc.), it is automatically wrapped in a resolved Promise.
+The `await` keyword can only be used **inside an `async` function**. It pauses the execution of the `async` function until the **Promise** passed to it is settled (either resolved or rejected).
+
+- When you use `await`, it waits for the Promise to resolve and returns the resolved value.
+- If the Promise is rejected, an error is thrown, and you can catch it using `try`/`catch`.
+
+### How `async` and `await` Work Together
+-----------------------------------------------
+- The `async` function is used to define a function that will return a **Promise**.
+- The `await` keyword is used to pause the execution of the `async` function and wait for a **Promise** to resolve.
+- This makes it much easier to handle asynchronous operations without needing to manually chain `.then()` and `.catch()`.

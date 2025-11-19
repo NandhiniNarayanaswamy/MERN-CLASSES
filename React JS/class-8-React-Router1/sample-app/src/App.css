@@ -1,0 +1,17 @@
+nav {
+  background-color: orange;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 10px;
+}
+
+
+nav a:hover {
+  color: blueviolet
+}

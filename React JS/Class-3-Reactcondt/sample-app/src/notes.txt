@@ -1,0 +1,82 @@
+🧐 why we need to put in flower bracket { name } ?
+🧠 1. What actually happens in React
+When you write this:
+<Child name="nandhu" />
+React internally passes props like this:
+{
+  name: "nandhu"
+}
+So the Child component receives one object called props, which contains all the data (props) sent by the parent.
+✅ Two ways to receive props:
+🔹 Way 1: Using props directly (classic way)
+function Child(props) {
+  return <p>Hello {props.name}</p>;
+}
+Here, you receive the full object, then use props.name
+🔹 Way 2: Destructuring props (cleaner)
+function Child({ name }) {
+  return <p>Hello {name}</p>;
+}
+In this case, you're saying:
+
+“Take the name property out of the props object and create a local variable called name.”
+
+That’s what this line does:
+function Child({ name }) {...}
+it's called destructuring.
+
+❓ Why does React show this error?
+🧩 Problem: Rendering an Object in JSX
+const obj = { name: "Nandhini", age: 25 };
+
+return <div>{obj}</div>;
+This will give you this React error:
+
+❌ “Objects are not valid as a React child.”
+React can only render these values inside JSX:
+| Type                        | Renderable? | Example                          |
+| --------------------------- | ----------- | -------------------------------- |
+| ✅ String                    | Yes         | `"Hello"` → Hello                |
+| ✅ Number                    | Yes         | `25` → 25                        |
+| ✅ JSX                       | Yes         | `<h1>Hello</h1>`                 |
+| ✅ Array of renderable items | Yes         | `["A", "B"]` → AB                |
+| ❌ Object                    | ❌ No        | `{ name: "Nandhini" }` → ❌ ERROR |
+✅ Solution: Use JSON.stringify(obj)
+This function converts a JavaScript object into a string (so that React can render it).
+🔍 Example:
+const obj = { name: "Nandhini", age: 25 };
+
+return <div>{JSON.stringify(obj)}</div>;
+🔸 Output in browser:
+
+{"name":"Nandhini","age":25}
+📌 What is JSON.stringify()?
+It's a JavaScript method that:
+
+Converts an object or array into a string in JSON format
+
+Useful for debugging or showing raw data
+
+Prop drilling
+----------------
+Prop drilling in React refers to the process of passing data (props) from a parent component down to deeply nested child components,
+ even if intermediate components don't need that data themselves — they just pass it along.
+
+❌ Why Prop Drilling is a Problem:
+It clutters code, especially when many components are involved.
+
+Makes components tightly coupled.
+
+Makes refactoring and maintenance more difficult.
+
+Intermediate components may be forced to have props they don’t use.
+
+⚛️ child to parent component
+-----------------------------
+🧠 First, understand the basics of data flow in React:
+Parent to Child: Easy! You pass data via props.
+Child to Parent: You cannot directly send data from child to parent. Instead, you use a function.
+📤 Child to Parent Communication
+In React, child-to-parent communication means sending data from a child component to a parent component.
+✅ How do we do that?
+You pass a function from parent to child via props. Then, the child calls that function and sends data to it.

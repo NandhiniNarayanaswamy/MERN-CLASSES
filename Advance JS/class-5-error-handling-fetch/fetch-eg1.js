@@ -3,7 +3,7 @@
 // 5 star
 fetch("https://jsonplaceholder.typicode.com/posts/1")
     .then(response => {
-        // return response.json(); //converting the response to json
+        return response.json(); //converting the response to json
         console.log(response);
 
     })

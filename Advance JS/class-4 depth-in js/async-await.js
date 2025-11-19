@@ -36,3 +36,4 @@ userLogin()
 
 // used to write simple code when we do asynchronous code.
 // Async/await provides the more cleaner and readable code to handle the promise...we can can avoid .then and catch
+//await needs to be only inside the asysc function 

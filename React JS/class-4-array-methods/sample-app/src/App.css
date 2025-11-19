@@ -1,0 +1,17 @@
+.headStyle {
+    border: 2px solid green;
+    background-Color: rgb(236, 219, 192);
+    font-style: italic;
+
+    text-align: center;
+
+}
+
+#para {
+    background-color: burlywood;
+    color: rgb(194, 41, 14);
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    font-size: 30px;
+}

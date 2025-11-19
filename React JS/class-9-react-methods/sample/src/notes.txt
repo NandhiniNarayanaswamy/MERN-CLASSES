@@ -1,0 +1,184 @@
+client => server
+      <=
+open flipkart page data we r geeting data because of get API
+register -  we use post method
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+WHY VALUE IN INPUT TAG?   
+----------------------------------------------------------------------------------------------------------------------------
+
+import { useState } from "react";
+
+function App() {
+  const [name, setName] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // stops page reload
+    setName(""); // clears React state
+  };
+
+  return (
+    <>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={name} // input follows React state
+            onChange={(e) => setName(e.target.value)}
+          />
+          <button type="submit">Submit</button>
+        </form>
+        <br />
+        You typed: {name}
+      </div>
+    </>
+  );
+}
+
+export default App;
+
+
+export default App;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---The browser itself manages the text inside the input box.
+When you type, the browser automatically updates what you see.
+
+---In HTML/React, onChange is an event that happens when the value of an input changes (like when you type in a text box).
+
+---const [title, setTitle] = useState("");
+title = React’s memory (state).
+setTitle = function to change that memory.
+Think: React has a notebook where it writes the value you type.
+
+---<p>You typed: {title}</p>
+This just prints whatever is in React’s notebook.
+Example: if title = "hello", then the screen shows → You typed: hello.
+So yes, {title} can show the state anywhere.
+
+=>Input Without value?
+***<input type="text" onChange={(e) => setTitle(e.target.value)} />
+<p>You typed: {title}</p>
+Here:
+You type hello in the input box.
+Browser automatically shows hello (input has its own memory).
+onChange runs → React updates title to "hello".
+The <p> also shows hello.
+👉 Works fine so far.
+
+=>The Problem Without value
+
+Now suppose we try to clear the input after submitting:
+const handleSubmit = () => {
+  alert(title);
+  setTitle(""); // reset React’s memory
+};
+React clears its notebook → title = "".
+<p> updates → You typed: (empty).
+❌ But the input box still shows the old text (because the browser, not React, controls it).
+so when you click submit the input box should clear but without value={name} u con't it only shows old value it react memory it will be clears but not shown in UI
+if we want to clear without value={name}, then we need to do manually using ref below i have mention that code also
+
+
+---------------------------------------------------------------------------------------------------------------------
+import { useState, useRef } from "react";
+
+function App() {
+  const [name, setName] = useState("");
+  const inputRef = useRef(null); // reference to input element
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setName(""); // clears React state
+    inputRef.current.value = ""; // clears input box manually
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          ref={inputRef} // connect ref to input
+          onChange={(e) => setName(e.target.value)}
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <br />
+      You typed: {name}
+    </div>
+  );
+}
+
+export default App;
+------------------------------------------------------------------------------------------------------------------
+
+axios
+-----

@@ -1,0 +1,30 @@
+🟢 Arrow Function Syntax
+
+An arrow function can be written in two main ways:
+1. Without {} → Implicit Return
+If you don’t use {}, the expression after => is returned automatically.
+city1.map((city) => (
+  <li>{city}</li>
+));
+
+Here:
+
+(city) => (<li>{city}</li>)
+means return <li>{city}</li> automatically.
+
+2. With {} → Explicit Return Needed
+
+If you use {}, you must explicitly write return.
+Because {} means function body, not an object or JSX directly.
+
+city1.map((city) => {
+  return <li>{city}</li>;  where it will return? it returns to the map function
+});
+
+✅ This works because we told it to return.
+🚨 Why Error Happens?
+If you write:
+city1.map((city) => { <li>{city}</li> });
+JavaScript thinks { ... } is a function body.
+Inside, you wrote <li>{city}</li> but never returned it.
+So it returns undefined → React shows nothing (or error if strict).

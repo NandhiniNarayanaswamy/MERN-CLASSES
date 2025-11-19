@@ -10,10 +10,10 @@ const mypromise = new Promise((resolve, reject) => {
 
 mypromise
     .then((result) => {
-        console.log("success:", result);
+        console.log("success:", result)
     })
     .catch((error) => {
-        console.log("error:", error);
+        console.log("error:", error)
     })
     .finally(() => {
         console.log("promise completed");

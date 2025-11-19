@@ -1,0 +1,108 @@
+1. Normally in JavaScript
+__________________________
+A function is just like an object → every time you create it, it’s a new one.
+------------------------------------------------------------------------
+Example:
+
+function sayHello() {
+  console.log("Hello")
+}
+
+function sayHello() {
+  console.log("Hello")
+}
+-------------------------------------------------------------------------
+
+Even though they “look” the same, these are two different function objects in memory.
+
+problem:- if we click one component all the component in the parent is running and showing, it should happen like this
+solution: memo -- In React, memo is a higher-order component (HOC) that is used to optimize performance by preventing unnecessary re-renders of a component.
+🔹 What happens normally?
+When the parent component re-renders, all of its child components also re-render, even if their props haven’t changed.
+This can be wasteful and affect performance if the child is heavy (complex UI, expensive calculations, etc.).
+🔹 What memo does
+
+memo tells React:
+👉 “Only re-render this component if its props actually changed.”
+---------------------------------------------------------------------------------------
+🔹 How memo actually works
+React.memo(Component) tells React: “only re-render this component if its props change.”
+But there’s a catch:
+If a prop is a function, it is recreated on every render of the parent.
+That means from the child’s perspective, handleage and handleCount are new props every time, even though their logic didn’t change.
+So memo sees different props and forces a re-render.
+-------------------------------------------------------------------------------------------------------------------------
+Usecallback
+***********
+✅1. Normally in JavaScript
+
+A function is just like an object → every time you create it, it’s a new one.
+-------------------------------------------------
+Example:
+
+function sayHello() {
+  console.log("Hello")
+}
+
+function sayHello() {
+  console.log("Hello")
+}
+---------------------------------------------------
+Even though they “look” the same, these are two different function objects in memory.
+
+✅2. In React
+
+When your component re-renders, React runs the function body again.
+That means all functions inside are recreated every render.
+------------------------------------------------------------------
+function App() {
+  const [count, setCount] = useState(0)
+
+  const handleClick = () => setCount(count + 1)
+
+  return <button onClick={handleClick}>+</button>
+}
+---------------------------------------------------------------------
+
+First render → React creates a handleClick function
+
+Second render → React creates a new handleClick
+
+Third render → another new handleClick
+
+So React is not reusing the old function.
+
+✅3. Why is this a problem?
+
+If you pass that function to a child:
+
+<Child onClick={handleClick} />
+
+
+The child sees a new function prop every time → it re-renders, even if the function body didn’t change.
+
+✅4. What useCallback does
+
+useCallback tells React:
+👉 “Please remember this function. Unless something in the dependency array changes, give me back the same exact function next time.”
+
+const handleClick = useCallback(() => {
+  setCount(c => c + 1)
+}, [])
+
+
+Now:
+
+First render → React creates handleClick and saves it.
+
+Next render → React checks dependencies ([] is empty, so nothing changed) → instead of creating a new function, it reuses the saved one.
+
+So the function reference stays the same between renders.
+
+✅5. In plain words
+
+Without useCallback:
+"Here’s a new pen every time you write." ✏️✏️✏️
+
+With useCallback:
+"Here’s the same pen unless you ask for a new one." 🖊️

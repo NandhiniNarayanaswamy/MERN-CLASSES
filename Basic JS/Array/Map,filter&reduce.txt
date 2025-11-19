@@ -1,0 +1,91 @@
+                                           📚 MAP()
+                                           ---------
+🤷  What is map() ❓
+📌 map() is an array method in JavaScript.
+📌 It runs a function on every element of the array.
+📌 It returns a new array with the results of that function.
+📌 It does not modify the original array (but the callback function can modify objects inside it if they are references).
+
+💻 Syntax
+let newArray = array.map(function(element, index, array) {
+    // return transformed value
+});
+
+ 📰 Parameters:
+
+element → Current value being processed (required).
+index → Index of the current element (optional).
+array → The entire array being mapped (optional).
+
+💡 Basic Example
+
+let numbers = [1, 2, 3, 4];
+let doubled = numbers.map(num => num * 2);
+console.log(doubled);      // [2, 4, 6, 8]
+console.log(numbers);      // [1, 2, 3, 4] (unchanged)
+
+✔️Important Points
+✨ Does not change the original array (unless you manually change object references inside it).
+✨ Always returns a new array of the same length as the original.
+✨ Works only on arrays (or array-like objects with .map() method).
+
+                                               📚 filter()
+                                               -------------
+🔍 What is filter()?
+The filter() method in JavaScript is used to create a new array containing only the elements that pass a certain condition defined in a callback function.
+It does not change the original array.
+
+📜 Syntax
+array.filter(function(element, index, array) {
+  // return true to keep the element
+  // return false to remove the element
+});
+
+🔑 Key Points
+✨ Returns a new array (does not modify the original).
+✨ The callback function should return a boolean (true → keep, false → skip).
+✨ Works on arrays only (though you can convert other iterables to arrays first).
+✨ Skips empty slots in sparse arrays.
+
+🗝 Parameters of the Callback
+element → The current element being processed.
+index (optional) → The index of the current element.
+array (optional) → The entire array being filtered.
+
+⭐ Example
+const numbers = [5, 12, 8, 130, 44];
+const bigNumbers = numbers.filter(function(num) {
+  return num > 10; // keep only numbers greater than 10
+});
+
+console.log(bigNumbers); // [12, 130, 44]
+
+💡 Where to Use filter()
+✨ Filtering even/odd numbers.
+✨ Getting active users from a list.
+✨ Searching items by keyword.
+✨ Removing null or undefined values.
+
+                                      📚  Reduce ()
+                                      ---------------
+📉 What is reduce()?
+The reduce() method in JavaScript executes a reducer function on each element of an array and returns a single accumulated result.
+It’s like taking an array and reducing it into one value — which could be a number, string, object, or even another array. 
+
+📜 Syntax
+array.reduce(function(accumulator, currentValue, currentIndex, array) {
+  // return updated accumulator
+}, initialValue);
+
+🔑 Key Points
+Returns one value after processing all elements.
+Works from left to right (use reduceRight() for right-to-left).
+Does not change the original array.
+initialValue is optional but recommended (prevents bugs on empty arrays).
+If no initialValue is provided, the first element is used as the initial value and iteration starts from the second element.
+
+🗝 Parameters of the Callback
+accumulator → The value returned after each iteration (stores the ongoing result).
+currentValue → The current element being processed.
+currentIndex (optional) → Index of the current element.
+array (optional) → The array reduce() was called on.

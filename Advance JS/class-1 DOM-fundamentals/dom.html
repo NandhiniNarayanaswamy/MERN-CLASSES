@@ -17,13 +17,33 @@
     <script>
         //creating element
         //element >> tag + content
-        let header = document.createElement('h2') //tagname >> tag is created like<h2></h2>
+        let header = document.createElement('h2') //tagname >> tag is created like<h2></h2> createElement is a method of the document object (and document is part of the global object in the browser).
         console.log(header);  //console it u see tag
-
+        /*What is document in JavaScript?
+        document is a global object in JavaScript provided by the browser.
+        It represents the whole webpage loaded in the browser (the DOM).
+        Through document, you can access and change any part of the page (elements, attributes, styles, etc.).
+        🖼 Example
+            When you write:
+            document.createElement("h1")
+            You are telling the browser:
+"Hey, in this web page (document), please create a new <h1> element."
+    🌍 What is a Global Object?
+A global object is an object that is available everywhere in your program (you don’t need to create or import it).
+It is the top-level object provided by the environment (browser or Node.js).
+All your code has access to it.
+✅ In short:
+A global object is the “top-most object” automatically created by the environment.
+In browser → window, in Node.js → global, and universal → globalThis.
+*/
         //for content you can use innerHTML/Text || innerText >> only Text
         header.innerText = "Hello world for JS"
         console.log(document.body); //console the document 
         document.body.append(header)//to show on the web page for that we need to use append
+        /*📌 What is document.body?
+        document = represents the whole webpage (DOM).
+        document.body = specifically points to the <body> element of your HTML page.*/
+        //This means: “Take the element stored in heading and put it at the end of the <body>.”
         // create element using div tag
         let para = document.createElement('div') //created div tag
         console.log(para);

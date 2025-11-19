@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice</title>
+</head>
+
+<body>
+    <div id="division1">
+        <h3 class="name">Hey Nandhini</h3>
+        <h3 class="name">Hey Shiv</h3>
+        <h3 class="name">Hey Ganesh</h3>
+        <h3 class="name">Hey Muruga</h3>
+    </div>
+    <script>
+        let divi1 = document.getElementById("division1")
+        console.log(divi1);
+        let class1 = document.getElementsByClassName("name")
+        for (let i = 0; i < class1.length; i++) {
+            class1[i].style.color = "olive"
+            let butt = document.createElement("button")
+            butt.innerText = "Click"
+            butt.style.margin = "10px"
+            butt.style.color = "red"
+            class1[i].append(butt)
+        }
+
+
+
+    </script>
+</body>
+
+</html>

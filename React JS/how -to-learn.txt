@@ -1,0 +1,17 @@
+if you are learning any topic in language?
+follow this pattern for learning:
+1. what is useState()?
+2. how to use UseState()?
+3. when to use UseState()?
+4. what problem does it solves?
+these much is enough don't go in depth beacuse you going to work in industry where it will keeep on updating 
+the concept which u learn today may not be used tomorrow they need to grow. so just follow this pattern.
+If you catch yourself going too deep, ask:
+“Will this help me explain it or use it in a project soon?”
+If yes → continue.
+If not → note it in a “Learn Later” list. (You can revisit it later out of curiosity.)
+
+
+don't change your character for learning deep.  just know to stop where you want
+you are not researching here in industry you are building
+for research you can in deep.
