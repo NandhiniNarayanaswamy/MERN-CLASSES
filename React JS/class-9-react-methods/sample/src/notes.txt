@@ -180,5 +180,109 @@ function App() {
 export default App;
 ------------------------------------------------------------------------------------------------------------------
 
+🚀 axios
+----------
+Axios is a popular JavaScript library used to make HTTP requests.
+You use it when you want your frontend (React, HTML, JS) to communicate with:
+Backend APIs (Node.js / Express)
+Databases via backend
+Third-party APIs (Weather API, Payment API, etc.)
+
+Example of what Axios can do:
+============================
+Register a user
+Login a user
+Save trainer profile
+Fetch trainer list
+Book a class
+Update schedules
+
+📝 How to install Axios
+npm install axios
+✔ 1. Cleaner and shorter syntax
 axios
------
+axios.get("/api/users")
+vs fetch:
+fetch("/api/users").then(res => res.json())
+
+✔ 2. Automatically converts JSON
+You don't need res.json()
+
+✔ 3. Automatically handles errors
+Axios has a cleaner error message structure.
+
+✔ 4. Supports request timeout
+You can stop a request if it takes too long.
+
+✔ 5. Supports interceptors
+
+📌 Basic Axios Usage
+----------------------
+1. GET request (fetch data)
+
+-----------------------------------------------------------
+import axios from "axios";
+
+axios.get("https://jsonplaceholder.typicode.com/users")
+  .then(res => console.log(res.data))
+  .catch(err => console.log(err));
+-----------------------------------------------------------
+
+2. POST request (send data)
+**************************
+Used for registration, login, forms, etc
+----------------------------------------------------------
+axios.post("http://localhost:5000/api/register", {
+  username: "Nandhini",
+  password: "1234"
+})
+.then(res => console.log(res.data))
+.catch(err => console.log(err));
+----------------------------------------------------------
+
+3. PUT request (update)
+**********************
+axios.put("/api/user/1", { name: "Updated Name" })
+
+4. DELETE request (delete resource)
+***********************************
+axios.delete("/api/user/1")
+
+
+🔥 Axios with async/await (most commonly used)
+----------------------------------------------
+
+--------------------------------------------------------------------------------------
+const fetchUsers = async () => {
+  try {
+    const res = await axios.get("https://jsonplaceholder.typicode.com/users");
+    console.log(res.data);
+  } catch (err) {
+    console.log(err.message);
+  }
+}
+---------------------------------------------------------------------------------------
+
+⚡ Axios in React (example with useEffect)
+******************************************
+
+--------------------------------------------------------------------------------------------
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+function UserList() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/users")
+      .then(res => setUsers(res.data))
+      .catch(err => console.log(err));
+  }, []);
+
+  return (
+    <>
+      {users.map(u => <div key={u.id}>{u.name}</div>)}
+    </>
+  );
+}
+---------------------------------------------------------------------------------------------
