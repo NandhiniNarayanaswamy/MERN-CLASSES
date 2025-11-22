@@ -1,0 +1,200 @@
+🚀 Redux
+***********
+=> Redux is a state management library commonly used in React applications to manage 
+and share data across components in a predictable way.
+
+=> Redux helps you store your application's data (state) in one central place (store) 
+so that any component can access or update that data without complicated prop drilling.
+
+this is the folder structure we created
+src
+ ├── App.js
+ ├── index.js
+ ├── components
+ │    └── Counter.js
+ ├── redux
+ │    ├── counterActions.js
+ │    ├── counterReducer.js
+ │    └── store.js
+ ├── App.css
+ └── index.css
+
+Now...
+understand the Analogy
+🌟 Imagine Redux as a “Central Diary” for Your Application
+Think of your app like a big house with many rooms (components).
+🏠 Rooms = React Components
+Like:
+Login page
+Dashboard
+Cart
+Navbar
+etc.
+📖 Problem
+Each room needs some common information. Example:
+Is the user logged in?
+How many items are in the cart?
+What is the user’s name?
+If every room tries to send messages to every other room → complete confusion, too many props, too many state updates.
+So we need ONE COMMON PLACE to store shared data.
+⭐ Redux = One Central Diary (Store)
+Just imagine there is one diary kept in the living room, and all rooms can:
+Read from the diary
+Write updates to the diary (but using a defined process)
+This diary = Redux Store
+🤔 So Why Do We Need a Store?
+Because without the diary:
+Every room keeps its own small piece of info
+Rooms don’t know updates from other rooms
+App becomes messy
+Bugs appear
+Data becomes INCONSISTENT
+With the store:
+All important data stays in one place
+Every component sees the same data
+Your app stays clean and predictable
+⭐ Next: How Does the Diary Get Updated?
+Imagine:
+You don’t directly write in the diary.
+Instead:
+You write a request slip
+(“Add one item to cart”)
+→ This is called an Action
+A manager reads your slip and updates the diary
+→ The manager is called the Reducer
+Diary changes → everyone in the house knows the new info
+→ Components automatically re-render
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+This is App.js file
+---------------------------------------------------------------------------------------------
+import Counter from './components/Counter';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+        <Counter />
+    </div>
+  );
+}
+
+export default App;
+-----------------------------------------------------------------------------------------------
+
+Here see v have imported counter means it same as counter code is in App.js, so we go to counter.js
+
+Counter.js
+-----------------------------------------------------------------------------------------------------------
+import { increment, decrement } from "../redux/counterActions";
+import { useSelector, useDispatch} from "react-redux"
+
+
+function Counter() {
+    // useSelector access the state from the redux store
+    const count = useSelector((state) => state.count)
+
+    // useDispatch dispatches actions to the redux store
+    const dispatch = useDispatch();
+
+
+
+    return(
+        <div>
+            <h1>Counter App</h1>
+            <h2>Count value is: {count}</h2>
+            <button onClick={() => dispatch(increment())}>increment</button> 
+            <button onClick={() => dispatch(decrement())}>decrement</button>
+        </div>
+    )
+}
+
+export default Counter
+----------------------------------------------------------------------------------------------------------------------------
+                                                |
+                                                v
+Here when user clicks increment button dispatch function vl go to action.js and return dispatch({ type: "INCREMENT" })
+
+action.js
+--------------------------------------------------------------------------------------
+
+// Action creater for incrementing the count value
+export const increment = () => {
+    return {type: "INCREMENT"}
+}
+
+
+
+// Action creater for incrementing the count value
+export const decrement = () => {
+    return {type: "DECREMENT"}
+}
+--------------------------------------------------------------------------------------------------
+
+So dispatch is sending the action object to Redux store.
+
+Your store has the reducer:
+
+const store = createStore(counterReducer);
+
+So Redux will send the dispatched action to your reducer:
+
+counterReducer(currentState, action)
+
+store.js
+-----------------------------------------------------------------------------------------------
+// import createStore to create the redux store
+import {createStore} from "redux";
+
+// import the counter reducer
+import counterReducer from "./counterReducer";
+
+// create the redux store and we are going pass the reducer
+const store = createStore(counterReducer);  //calls the reducer function
+
+export default store
+-------------------------------------------------------------------------------------------
+
+Store updates the state
+The store automatically:
+
+saves the new state
+
+notifies React
+
+React re-renders any component using useSelector.
+
+useSelector gets the updated state
+const count = useSelector((state) => state.count)
+
+
+After reducer updates count, useSelector receives new value.
+
+UI becomes updated automatically.
+
+
+*********************************************************************************
+Click Button
+   ↓
+dispatch(increment())
+   ↓
+increment() → {type: "INCREMENT"}
+   ↓
+Store receives action
+   ↓
+Store sends action to reducer
+   ↓
+Reducer runs:
+    if INCREMENT → count + 1
+    if DECREMENT → count - 1
+   ↓
+Reducer returns updated state
+   ↓
+Store updates state
+   ↓
+useSelector gets the new state
+   ↓
+UI updates automatically
+***************************************************************************
+
