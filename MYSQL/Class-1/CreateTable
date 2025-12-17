@@ -1,0 +1,151 @@
+------------------------- Employee  TABLE------------------------
+
+Create Table employees(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50),
+  email VARCHAR(50),
+  department VARCHAR(50),
+  age INT ,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)ENGINE = MYISAM;
+
+INSERT INTO employees(name,email,department,age)
+VALUES ("Nandhini","nandhu@gmail.com","HR",24),
+ ("Ramya","ramu@gmail.com","QA",20),
+("jessie","jeesu@gmail.com","TL",26),
+("harini","haru@gmail.com","MANAGER",25);
+SELECT * from employees;
+
+--------------------------------------------- Student Table -------------------------------------
+
+CREATE TABLE student(
+id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(50)NOT NULL,
+  last_name VARCHAR(50)NOT NULL,
+  age INT NOT NULL,
+  gender ENUM("Male","Female","Transgender"),
+  email VARCHAR(50) UNIQUE NOT NULL,
+  phone_number VARCHAR(50),
+  address TEXT,
+  enrollment_date DATE,
+  status ENUM("Active","InActive")
+);
+
+INSERT into student(first_name,last_name,age,gender,email,phone_number,address,enrollment_date,status)
+VALUES
+("Nandhini","NarayanaSwamy",23,"Female","nandhu@gmail.com","12345678","Hosur","2025-03-12","Active"),
+("Priya","kumari",29,"Male","priya@gmail.com","12345678","Chennai","2025-04-2","Active"),
+("Veda","Dharshini",23,"Female","veda@gmail.com","345678","Vellor","2024-03-12","Active")
+;
+SELECT * from student
+
+
+-- i wanted to get students whose status is "Active"
+SELECT * from student WHERE status = "Active";
+
+SELECT * from student WHERE status = "InActive";
+
+SELECT * from student WHERE age = 64;
+
+SELECT * from student WHERE email = "John.christ@gmail.com";
+
+-- to update the data in the tables then we have to use, after update we must and should query,
+-- It changes the address of the id =1
+UPDATE student SET address = "chennai T" WHERE Student_id = 1;
+
+SELECT * from student;
+
+-------------------------------------------------------------------
+
+-- i wanted to delete the data from the table
+DELETE FROM STUDENT WHERE Student_id = 2;
+DELETE FROM STUDENT WHERE Student_id = 3;
+SELECT * from student;
+
+
+-- i wanted to add new column, alter
+ALTER TABLE STUDENT ADD COLUMN grade VARCHAR(5);
+
+SELECT * from student;
+
+-- CHANGE THE EXISTING COLUMN
+ALTER TABLE STUDENT MODIFY COLUMN age SMALLINT;
+
+SELECT * from student;
+
+-- adding the new column and removing the column 
+ALTER TABLE STUDENT ADD COLUMN grade VARCHAR(5);
+ALTER TABLE STUDENT DROP COLUMN grade;
+
+SELECT * from student;
+
+
+-- I wanted to get the unique students based upon the status values
+SELECT DISTINCT status from student;
+
+-- count the students by status and change to allias name
+
+select status, count(*) AS total_students from student group by status;
+
+
+-- i wanted to sort the students by age (ascending)
+select * from student order by age ASC;
+
+select * from student order by age desc;
+
+-- I wanted to limit the students , it limit to 1 row 
+select * from student LIMIT 1;
+
+
+--  I wanted to skip the rows and limit OFFSET is skip first 2 row and show 3 row alone
+select * from student LIMIT 1 OFFSET 2;
+
+
+-- select specific columns
+select first_name, last_name, age, gender from student;
+
+
+-- I wanted to get active male students older than 60
+select * from student where age > 60 AND gender = "Male" AND status = "Active";
+
+--  i wanted to get the students who are either be active or youger than 40
+select * from student where status = "InActive" or age < 40;
+
+-- i wanted to get the students who are not inactive
+
+select * from student where NOT status = "inactive"
+
+--  get the students whose first name starts with L
+select * from student where first_name LIKE "L%";
+
+
+-- I wanted to get the students aged b/w 20 and 40
+select * from student where age BETWEEN 20 and 50;
+
+--  i wanted to find the oldest student
+
+select min(age)as baby_student from student;
+select max(age)as older_student from student;
+
+--  i wanted to find the average of all the students
+SELECT AVG(age) as average_age from student;
+
+
+-- sum of all the students ages
+SELECT SUM(age) as total_age from student;
+
+-- alias can change name instead of first_name we can keep as FIRST NAME even in avg,sum,min,max alias is used to name
+
+SELECT first_name as "FIRST NAME", last_name as "LAST NAME" from student;
+
+-- TRANSFORM THE TEXT changing to upper case and lower casse
+SELECT UPPER(first_name) as "FIRST NAME", UPPER(last_name) as "LAST NAME" from student; 
+SELECT LOWER(first_name) as "FIRST NAME", LOWER(last_name) as "LAST NAME" from student;
+
+
+-- length function, finds the lenth of the word 
+SELECT upper(first_name) as "FIRST NAME",length(first_name)AS "Length of First_Name" FROM students;
+-- i wanted to find each student length for the first name
+
+useEffect
+

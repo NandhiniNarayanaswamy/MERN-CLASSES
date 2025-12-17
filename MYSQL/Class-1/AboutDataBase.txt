@@ -1,0 +1,53 @@
+what is database...
+database is an organized collection of user data.
+
+Database used to store, manage and retrieve user data and it will help us 
+store large inforamtion of the users in the database storage.
+
+
+why we have to use Database
+
+Data organization..Databases used to store the data in tables, so that it is easy to
+retrieve, store, fitler
+
+
+Data Intergrity----Accurate and consistent
+
+
+concurrency...muliple users can access and modify the database at the same time without any conficts
+
+
+
+Types of Databases:
+
+1) RDBMS (Relational Database)
+Data is stores in tables as rows and columns
+SQL(Structured Query Language) to manage and query data
+
+examples: 
+MYSQL
+PostgreSQL
+SQLLite
+Microsoft SQL Server
+Oracle
+
+
+
+2) NOSQL Database(MongoDB)
+stores the user data in the key value pair like JSON (BSON--binary json)
+MongoDB 
+Redis
+Neo4j
+
+3) In-memory database
+Stores the data in memory(RAM) for faster access
+used for real time applications
+
+
+4) Cloud database 
+hosted and mangaged on the cloud platforms
+
+Amazon RDS 
+Azure SQL
+Google Cloud Firestore
+

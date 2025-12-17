@@ -1,0 +1,25 @@
+Number data Types
+INT 
+FLOAT 90.91
+DECIMAL
+
+
+
+string data Types
+CHAR (1 TO 255)..Fixed length
+VARCHAR(1 TO 65000+)
+MEDIUMTEXT
+LONGTEXT
+TEXT
+ENUM (String object with the predefined the list of values) ENUM ("LG", "OPPO")
+
+
+DATA AND TIME DATA Types
+
+DATE YYYY-MM-DD
+DATETIME YYYY-MM-DD HH:MM:SS 
+TIMESTAMP CURRENT TIME
+TIME
+YEAR
+
+BOOLEAN

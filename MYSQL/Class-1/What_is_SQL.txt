@@ -1,0 +1,37 @@
+MYSQL is the open source Relational Database management system(RDBMS)
+
+We are going to use Structured query Language in MYSQL to store, manage and retrieve the data.
+
+
+Key features of MYSQL
+
+1)Open source (GNU & GPL)
+2) Relational Database
+3) SQL Based
+4) Cross Platform -> linux, windows, macos etc
+5) Secure
+
+
+MYSQL Architecture
+
+1) Client Layer
+handles client connections and communcation
+
+
+
+2) Server Layer
+process the sql queries , storage, indexing
+
+3) Storage Layer
+handles the data storage and retrieval
+Supports different storage engines
+
+1) INNODB (Default storage engine, support transactions )
+
+2) MYISAM (Older engine.....not support transactions but allows full text search, fast read heavy applications)
+
+3) MEMORY (temporary data) stores the data in momery
+
+4) CSV..stores the data in comma separated files
+
+5) ARCHIEVE...compressed storage for large volumes of historical data
