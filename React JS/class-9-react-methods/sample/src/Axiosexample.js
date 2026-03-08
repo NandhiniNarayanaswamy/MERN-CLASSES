@@ -93,3 +93,37 @@ function App() {
     )
 }
 export default App
+
+/*
+✅ What is Axios?
+Axios is a library used to make API calls.
+API call means:
+➡️ sending data to backend
+➡️ getting data from backend
+➡️ getting data from a server
+➡️ sending login/register details, fetching posts, products, etc.
+
+🔥 Why do we use Axios?
+Because JavaScript has a built-in function called fetch(), but Axios makes things much easier.
+
+📦 Install Axios
+npm install axios
+Then import:
+import axios from "axios";
+
+✅ Does Axios need res.json()?
+NO.
+Axios automatically converts the response to JSON.
+That means you do NOT need to write:
+res.json()
+
+🔍 When does Axios convert to JSON?
+Immediately after it receives the response from the server.
+eg:
+axios.get("/api/user")
+  .then(res => console.log(res.data))
+Here:
+res = full response
+res.data = already converted JSON
+Axios automatically reads the JSON body from the server and converts it for you.
+*/

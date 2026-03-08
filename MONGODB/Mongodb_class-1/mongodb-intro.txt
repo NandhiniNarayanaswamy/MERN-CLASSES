@@ -1,0 +1,56 @@
+Mongodb is NOSQL database which will have more flexible, 
+scalable and ease to use..
+
+
+Mongodb stores the data in document oriented format like JSON like objects
+documents are stored as BSON(Binary JSON)
+
+{ 
+    "name" : "venkat",
+    age: 20, 
+    "email": "venkat@gmail.com",
+    "hobbies" : ["reading", "watching cricket"]
+}
+
+
+//mongodb schema less
+
+//easy to intergrate with javascript, JSON format
+
+//powerful query language...
+filtering, aggregation etc
+free and open source
+
+
+Mongodb vs MySQL
+
+mongodb -> NOSQL (Non relational Datbase)   
+stores the data as documents JSON formate
+schema-less document can have different structures
+document based (key - value pairs)
+MQL (mongodb query language)
+faster for large datsets
+will not support for joins
+
+where we can use...
+IOT applciation 
+real time analytics
+big data applications
+
+it stores the data in BSON (Binary JSON)
+
+
+
+
+
+mysql -> SQL (relational database)
+
+-> stores the data in tables with rows and columns
+-> fixed schema tables have predefined columns and data types
+-> relational (tables with rows and columns)
+-> SQL (structured query language)
+-> SQL supports the joins
+
+->CRM, ERP systems 
+
+data stores in rows and columns

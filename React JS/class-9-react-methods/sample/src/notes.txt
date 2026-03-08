@@ -4,75 +4,6 @@ open flipkart page data we r geeting data because of get API
 register -  we use post method
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 WHY VALUE IN INPUT TAG?   
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -93,7 +24,7 @@ function App() {
           <input
             type="text"
             value={name} // input follows React state
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}  
           />
           <button type="submit">Submit</button>
         </form>
@@ -147,7 +78,12 @@ React clears its notebook → title = "".
 so when you click submit the input box should clear but without value={name} u con't it only shows old value it react memory it will be clears but not shown in UI
 if we want to clear without value={name}, then we need to do manually using ref below i have mention that code also
 
-
+ onChange={(e) => setName(e.target.value)} meaning
+e simply means event.
+React sends an event object automatically whenever something happens (typing, clicking, changing input, etc.)
+React gives you something called an event object:
+e.target = the element where the event happened
+e.target.value = the text inside the input
 ---------------------------------------------------------------------------------------------------------------------
 import { useState, useRef } from "react";
 

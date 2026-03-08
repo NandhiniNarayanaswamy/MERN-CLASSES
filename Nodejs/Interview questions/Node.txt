@@ -1,0 +1,15 @@
+❓ 1) what is Node.js?
+🟢 Node.js is a runtime that allows JavaScript to run outside the browser, mainly to build backend servers.
+🧠 What Node.js is NOT
+❌ Not a programming language
+❌ Not a framework
+❌ Not a database
+✅ It is an environment to run JavaScript
+❓ Why Node.js is fast?
+built on the V8 engine that enables non-blocking,
+Because it uses the V8 engine and non-blocking I/O.
+❓ Where is Node.js used?
+APIs
+Web servers
+Real-time apps (chat)
+Backend for React / MERN

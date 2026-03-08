@@ -1,0 +1,139 @@
+V8 engine developed by google - added in browser to run js
+because of this js can be run in browser and outside of the browser
+
+Nodejs is run time env to create the backend application
+
+200
+
+HTTP Status Code
+
+Means: Success / OK
+
+Common status codes:
+| Code | Meaning      |
+| ---- | ------------ |
+| 200  | OK           |
+| 404  | Not Found    |
+| 500  | Server Error |
+
+Tells the browser what type of data it is receiving.
+| Content-Type       | Meaning     |
+| ------------------ | ----------- |
+| `text/plain`       | Normal text |
+| `text/html`        | HTML page   |
+| `application/json` | JSON data   |
+
+🧑‍💼 HOW INTERVIEWER ASKS (CODING QUESTION)
+Interview Question:
+Write a simple Node.js program to create a server that sends a response to the browser.
+OR
+Create a basic HTTP server in Node.js.
+------------------------------------------------------------------------------------------------------------
+// built in packages...node js is providing built in packages
+
+//http module
+
+//import the built in http module
+
+const http = require('https');
+
+// create the server
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { "Content-Type": "text/plain" })
+    res.end("Hello hi guys")
+
+});
+
+//define the port number
+const PORT = 5001;
+
+
+//start the server
+server.listen(PORT, () => {
+    console.log(`server is runnning at the port ${PORT}`)
+})
+-----------------------------------------------------------------------------------------------------------------
+
+🟡 STEP 1: What kind of program is this?
+// This is a WAITING program. 
+Like:
+a security guard
+a watchman
+a receptionist
+They start work and wait.
+
+🟡 STEP 2: Imagine a DOORBELL 🔔 (VERY IMPORTANT)
+
+House = your computer
+Door = port (5001)
+Doorbell = browser request
+Watchman = Node.js server
+
+🟡 STEP 3: Look at ONLY THIS LINE
+server.listen(5001)
+
+Meaning in normal English:
+“Open door number 5001 and wait.
+If someone rings the bell, call me.”
+
+That’s it.
+Nothing else.
+
+✅ YES — .listen() means START WAITING
+
+🟡 STEP 4: What happens BEFORE someone comes?
+node server.js
+
+Now:
+Program is running
+Nothing is printed
+Nothing happens
+Because no one came yet.
+Just like a watchman sitting.
+
+🟡 STEP 5: WHO sends request?
+⚠️ Server does NOT send request
+
+Request always comes from:
+Browser (YOU)
+Postman
+Mobile app
+
+🟡 STEP 6: YOU send the request (IMPORTANT)
+
+You open browser and type:
+http://localhost:5001
+
+This action means:
+“I am ringing doorbell 5001”
+
+🟡 STEP 7: What happens IMMEDIATELY after that?
+This code wakes up 👇
+
+(req, res) => {
+    res.end("Hello hi guys")
+}
+Think:
+“Someone came, respond now.”
+
+🟡 STEP 8: Forget headers, status, everything
+
+Ignore this line for now:
+res.writeHead(...)
+
+Focus ONLY on this 👇
+res.end("Hello hi guys")
+Meaning:
+“Reply with this message and finish.”
+
+🟡 STEP 9: Why do you see text in browser?
+
+Because:
+Browser asked
+Server replied
+Just like:
+Question asked
+Answer given
+
+🟢 COMPLETE FLOW (ONE SENTENCE)
+Start server → wait → browser asks → server replies

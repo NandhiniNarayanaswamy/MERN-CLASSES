@@ -1,0 +1,145 @@
+i wanted to see all the databases -> show dbs 
+
+i wnated to create new database -> use <database name>
+if we give above command it will create the database and switch to the database
+
+how to create the collection in mongodb
+
+ //-------------------------------------------------------------------------------------------
+//create Database-- this will create database and switch to that database
+ 👉 use first_try
+
+ 👉 db.createCollection("students") -> create collection (table)
+
+ //inserting one record
+ 👉 db.students.insertOne({name:"nandini",age:67,email:"nandhu@gmail.com",grade:"A"})
+
+//to get records which we stored (instead of select in mysql)
+👉 db.students.find()
+
+//insertMany at a time insert 10 or 20 document 
+
+👉 db.students.insertMany([{name:"manoj",age:24,email:"mano@gmail.com",grade:"B"},
+    {name:"Hari",age:14,email:"hari@gmail.com",grade:"c"},
+    {name:"yuvan",age:28,email:"yuvan@gmail.com",grade:"D"},
+    {name:"janu",age:45,email:"janani@gmail.com",grade:"E"},
+    {name:"thanvi",age:13,email:"thanvi@gmail.com",grade:"F"},])
+
+//we can insert data directly but we cannot do that in mysql that is why mongoDB called as scehma less
+here i added id and hobbies
+👉 db.students.insertMany([{_id:"nandhu_1",name:"manoj",age:24,email:"mano@gmail.com",grade:"B",hobbies:["reading","sport"]},
+    {_id:"nandhu_2",name:"Hari",age:14,email:"hari@gmail.com",grade:"c",hobbies:["gym","sport"]},
+    {_id:"nandhu_3",name:"yuvan",age:28,email:"yuvan@gmail.com",grade:"D",hobbies:["cooking","playing"]},
+    {_id:"nandhu_4",name:"janu",age:45,email:"janani@gmail.com",grade:"E",hobbies:["music","travelling"]},
+    {_id:"nandhu_5",name:"thanvi",age:13,email:"thanvi@gmail.com",grade:"F",hobbies:["gym","travelling"]}])
+
+//find the users older than 25
+👉 db.students.find({age:{$gt:28}})
+
+//find the particular document
+👉 db.students.find({_id:"nandhu_2"})
+
+🎯 Comparison
+The following operators can be used in queries to compare values:
+
+🧠 $eq: Values are equal
+🧠 $ne: Values are not equal
+🧠 $gt: Value is greater than another value
+🧠 $gte: Value is greater than or equal to another value
+🧠 $lt: Value is less than another value
+🧠 $lte: Value is less than or equal to another value
+🧠 $in: Value is matched within an array
+
+👉 $eq: Values are equal
+db.students.find({age:{$eq:45}})
+
+👉 $ne: Values are not equal
+db.students.find({age:{$ne:13}})
+
+👉 $gt: Value is greater than another value
+db.students.find({age:{$gt:28}})
+
+👉 $gte: Value is greater than or equal to another value
+db.students.find({age:{$gte:28}})
+
+👉 $lt: Value is less than another value
+db.students.find({age:{$lt:28}})
+
+👉 $lte: Value is less than or equal to another value
+db.students.find({age:{$lte:24}})
+
+👉 $in: Value is matched within an array
+db.students.find({grade:{$in:["A","B","C"]}})
+
+🎯 Logical
+The following operators can logically compare multiple queries.
+
+🧠 $and: Returns documents where both queries match
+🧠 $or: Returns documents where either query matches
+🧠 $nor: Returns documents where both queries fail to match
+🧠 $not: Returns documents where the query does not match
+
+👉 $and: Returns documents where both queries match
+db.students.find({$and:[
+{age:{$gt:28}},
+{grade:"E"},
+{_id:"nandhu_4"}
+]})
+
+👉 $or: Returns documents where either query matches
+db.students.find({$or:[
+{age:{$gt:14}},
+{grade:"E"}
+]})
+
+👉 $nor: Returns documents where both queries fail to match
+db.students.find({$nor:[
+{age:{$gt:28}},
+{grade:"E"}
+]})
+
+👉 $not: Returns documents where the query does not match
+db.students.find({age:{$not:{$gt:18}}}) -- > oppositly work
+
+🧠 Easy memory trick
+$not → ❌ one condition
+$nor → ❌❌ many conditions
+
+🎯 Evaluation
+The following operators assist in evaluating documents.
+
+🧠 $regex: Allows the use of regular expressions when evaluating field values
+🧠 $text: Performs a text search
+🧠 $where: Uses a JavaScript expression to match documents
+
+👉 $regex: Allows the use of regular expressions when evaluating field values
+
+i wanted to find student with letter start with na
+db.students.find({name:{$regex:"^na"}})
+
+i wanted to find the students ends with i
+db.students.find({name:{$regex:/i$/}})
+
+sort the students by age in ascending order
+db.students.find().sort({age:1}) -- > ascending order
+db.students.find().sort({age:-1}) --> Desending order
+
+limit the students
+skip first 2 students and show the next 3
+
+db.students.find().limit(3)
+
+it vl skip 2 and limit with 3
+db.students.find().skip(2).limit(3)
+
+updateOne
+db.students.updateOne({name:"Hari"},{$set:{grade:"A++"}}) --> it only update first match means first value which it sees
+updateMany
+db.students.updateMany({name:"Hari"},{$set:{grade:"A+++"}})  --> it updates all the value which has hari name
+$set is the thing it gives which value need to change
+
+DeleteOne
+db.students.deleteOne({name:"Hari"})
+DeleteMany
+db.students.deleteMany({name:"Hari"}) -- > delete all the students
+

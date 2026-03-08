@@ -1,0 +1,7 @@
+🎯 HTTP Methods:-
+
+    🚀 GET - To get the data from the backend
+    🚀 POST - TO post the data, register
+    🚀 PUT - To update entire record or data
+    🚀 DELETE - To delete the data
+    🚀 PATCH - To update partial data

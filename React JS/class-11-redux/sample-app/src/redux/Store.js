@@ -1,5 +1,6 @@
 import { createStore } from "redux";
 //We import reducer so store can use it
+//createStore() creates one big storage (store) that holds your entire app’s state.
 import CounterReducer from "./CounterReducer";
 const store = createStore(CounterReducer)
 /*👉 YES.

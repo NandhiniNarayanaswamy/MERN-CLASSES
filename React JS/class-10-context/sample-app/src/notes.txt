@@ -1,0 +1,28 @@
+what is UserContext()?
+UserContext is a way in React to share data across multiple components without passing props manually at every level.
+🧠  (Simple Explanation)
+Imagine your app has many components:
+App
+ ├── Navbar
+ ├── Home
+ ├── Dashboard
+ └── Profile
+Without context, you’ll have to pass props like this:
+
+App → Navbar
+App → Home
+App → Profile
+
+This is called prop drilling, and it becomes messy.
+
+👉 UserContext solves this.
+It allows you to store user data at one place and access it anywhere.
+
+🎯 Why do we use UserContext?
+
+Because it helps you:
+
+✔ Avoid prop drilling
+✔ Keep user authentication info globally
+✔ Use logged-in user data in any component
+✔ Share state across the app easily

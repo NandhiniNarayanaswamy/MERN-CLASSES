@@ -1,0 +1,31 @@
+In mongodb a document is the unit of data storage.
+
+document in mongodb = row in relational database
+
+structure of the document
+
+-> A document is the key-value pair structure where
+
+key are strings (field names)
+
+values can be different types such
+
+types -> strings, 
+        numbers, 
+        arrays,
+        booleans, 
+        dates, 
+        objects
+
+{
+    "id": 1,
+    "name": "venkat", 
+     "age" : 20, 
+     "isStudent" : true,
+    "email" : "venkat@gmail.com",
+    "hobbies" : ["reading", "cricket"],
+    "address": {
+        "city" : "bangalore",
+        "zip" : 560032
+    }
+}

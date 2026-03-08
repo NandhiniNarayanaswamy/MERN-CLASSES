@@ -1,13 +1,10 @@
-import LevelTwo from "./LevelTwo"
-
+import LevelTwo from "../usercontext/component/LevelTwo"
 function LevelOne() {
-
     return (
-        <div>
-            <h2>Level One</h2>
+        <>
+            <p>Levelone</p>
             <LevelTwo />
-        </div>
+        </>
     )
-
 }
 export default LevelOne

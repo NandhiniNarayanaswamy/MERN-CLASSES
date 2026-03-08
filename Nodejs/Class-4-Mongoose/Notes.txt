@@ -1,0 +1,9 @@
+🧠 Step 1: What is mongoose?
+Mongoose is a library used in Node.js to connect and work with
+MongoDB.
+
+Think like this:
+
+👉 MongoDB = database
+👉 Mongoose = tool that helps Node.js talk to MongoDB
+

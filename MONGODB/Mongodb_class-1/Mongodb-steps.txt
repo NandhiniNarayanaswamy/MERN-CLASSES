@@ -1,0 +1,21 @@
+i wanted to see all the databases -> show dbs 
+
+i wnated to create new database -> use <database name>
+if we give above command it will create the database and switch to the database
+
+how to create the collection in mongodb
+
+show dbs 
+use batch
+db.createCollection("users")
+
+I wanted to insert the data into the collection (users -> collection name)
+db.users.insertOne({name: "leena", email: "leena@gmail.com"})
+
+db.users.insertOne({name: "achal", email: "achal@gmail.com"})
+db.users.insertOne({name: "venkatesh", email: "achal@gmail.com"})
+db.users.insertOne({name: "arun", email: "achal@gmail.com"})
+db.users.insertOne({name: "anushkaran", email: "anushkaran@gmail.com"})
+db.users.insertOne({name: "yashwanth", email: "yashwanth@gmail.com"})
+
+db.users.find()

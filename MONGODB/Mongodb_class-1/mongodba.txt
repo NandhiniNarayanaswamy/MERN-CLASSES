@@ -1,0 +1,201 @@
+use mentors
+db.createCollection("students")
+
+db.students.insertMany([
+    {name:"Nandhini",
+        age:78,
+        gender:"Female",
+        email:"nandhu@gmail.com",
+        phone:"2358-8907-6778",
+        address:"123-Hosur",
+        enrollmentdate:new Date("2025-02-02"),
+        major:"Computer Science",
+        GPA:6.1,
+        active:true
+    },
+    {name:"Krishna",
+        age:68,
+        gender:"male",
+        email:"krish@gmail.com",
+        phone:"67781234",
+        address:"78-Nellor",
+        enrollmentdate:new Date("2025-05-12"),
+        major:"Law",
+        GPA:9,
+        active:false
+    },
+    {
+        name: "Dharshan",
+        age: 12,
+        gender: "male",
+        email: "dharshan@gmail.com",
+        phone: "89076778",
+        address: "90/78 - Goa",
+        enrollmentdate: new Date("2025-02-23"),
+        major: "Medicine",
+        GPA: 8,
+        active: true
+    },
+    {
+        name: "Anitha",
+        age: 34,
+        gender: "Female",
+        email: "anita@gmail.com",
+        phone: "67788976",
+        address: "123-vellor",
+        enrollmentdate: new Date("2025-03-12"),
+        major: "Science",
+        GPA: 7,
+        active: false
+    },
+    {
+        name: "Ram",
+        age: 43,
+        gender: "male",
+        email: "ram@gmail.com",
+        phone: "90876543",
+        address: "89-chennai",
+        enrollmentdate: new Date("2024-02-03"),
+        major: "Biology",
+        GPA: 9,
+        active: true
+    }
+])
+
+Mongodb Aggregation:-
+What is Aggregation Pipeline?
+
+Aggregation pipeline processes documents step by step, where each stage transforms the output of the previous stage.
+
+db.collection.aggregate([
+  { stage1 },
+  { stage2 },
+  { stage3 }
+])
+
+1️⃣ $match
+db.students.aggregate([{$match:{active:true}}])
+
+2️⃣ $project
+👉 Select, remove, or create fields
+DB quieries:
+db.students.aggregate([
+    {$project:{name:1,major:1,_id:0}}
+])
+
+3️⃣ $group
+👉 Groups documents and performs calculations
+Common operators:
+$sum
+$avg
+$min
+$max
+$count
+
+What exactly is $group?
+
+👉 $group combines many documents into one document and does calculations
+Think of it like:
+“Collect similar records and calculate something”
+
+Basic Structure of $group
+{
+  $group: {
+    _id: <grouping key>,
+    fieldName: { operator: "$field" }
+  }
+}
+
+MOST IMPORTANT RULE 🚨
+👉 _id decides HOW the data is grouped
+| `_id` value  | Meaning                   |
+| ------------ | ------------------------- |
+| `"$name"`    | Group by name             |
+| `"$subject"` | Group by subject          |
+| `null`       | Group everything together |
+
+SUM:-
+db.students.aggregate([
+    {$group:{
+        _id:"$gender",
+        total:{$sum:"$GPA"}
+    }}
+])
+
+AVG:-
+db.students.aggregate([
+    {$group:{
+        _id:"$active",
+        average:{$avg:"$age"}
+    }}
+])
+
+MIN:-
+db.students.aggregate([
+    {$group:{
+        _id:"$gender",
+        minimumAge:{$min:"$age"}
+    }}
+])
+
+MAX:-
+db.students.aggregate([
+    {$group:{
+        _id:"$gender",
+        maximumAge:{$max:"$age"}
+    }}
+])
+
+COUNT:-
+db.students.aggregate([
+    {$group:{
+        _id:"$gender",
+        counting:{$sum:"$true"}
+    }}
+])
+
+4️⃣ $sort
+👉 Sort documents
+✔ -1 → descending
+✔ 1 → ascending
+sort age in ascending order
+db.students.aggregate([
+    {$sort:{age:1}}
+])
+
+5️⃣ $limit
+👉 Limits number of documents
+sort age in asending and limit to 2
+db.students.aggregate([
+    {$sort:{age:-1}},
+    {$limit:2}
+    
+])
+
+6️⃣ $skip
+👉 Skips documents (used for pagination)
+db.students.aggregate([
+    {$skip:2}
+])
+
+7️⃣ $addFields
+👉 Adds new calculated fields (does NOT remove existing ones)
+
+db.students.aggregate([
+    {
+        $addFields:{
+            totalfields:{$multiply:["$GPA","$age"]}
+        }
+    }
+])
+1) find the students by name?
+db.students.find({name:"Ram"})
+
+2) find all the students who are active?
+db.students.find({active:true})
+
+3) Find the students with GPA greater than 8?
+db.students.find({GPA:{$gt:8}})
+
+4) Find the students from the specific city in the address?
+
